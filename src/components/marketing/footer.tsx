@@ -66,17 +66,6 @@ export function Footer() {
     { name: "YouTube", icon: Youtube, href: "#", color: "hover:text-red-600" },
   ];
 
-  const handleLinkClick = (href: string, e: React.MouseEvent) => {
-    e.preventDefault();
-    if (href.startsWith("#")) {
-      const sectionId = href.replace("#", "");
-      const section = document.getElementById(sectionId);
-      if (section) {
-        section.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  };
-
   return (
     <footer className="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
       {/* Main Footer Content */}
@@ -102,9 +91,9 @@ export function Footer() {
               transforme a experiência dos seus clientes.
             </p>
 
-            {/* Contact Info - MELHORADO PARA MOBILE */}
+            {/* Contact Info */}
             <div className="space-y-4">
-              {/* Endereço */}
+              {/* Address */}
               <div className="flex items-start gap-3 text-gray-600 dark:text-gray-300">
                 <div className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-1">
                   <MapPin className="w-5 h-5" aria-hidden="true" />
@@ -116,7 +105,7 @@ export function Footer() {
                 </address>
               </div>
 
-              {/* Telefone */}
+              {/* Telephone */}
               <div className="flex items-start gap-3 text-gray-600 dark:text-gray-300">
                 <div className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-1">
                   <Phone className="w-5 h-5" aria-hidden="true" />
@@ -144,7 +133,7 @@ export function Footer() {
                 </a>
               </div>
 
-              {/* Horário */}
+              {/* Hours */}
               <div className="flex items-start gap-3 text-gray-600 dark:text-gray-300">
                 <div className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-1">
                   <Clock className="w-5 h-5" aria-hidden="true" />

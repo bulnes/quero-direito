@@ -28,7 +28,7 @@ export function Newsletter() {
                 aria-describedby="newsletter-privacy"
               />
               <Button
-                className="bg-white text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium transition-all duration-200 shadow-lg hover:shadow-xl"
+                className="bg-white text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium transition-all duration-200 shadow-lg hover:shadow-xl cursor-pointer"
                 aria-label="Inscrever-se na newsletter"
               >
                 Inscrever-se
