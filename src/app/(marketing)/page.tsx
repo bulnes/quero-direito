@@ -1,7 +1,13 @@
+import { Footer } from "@/components/marketing/footer";
+import { Newsletter } from "@/components/marketing/newsletter";
+
 export default function Home() {
   return (
-    <div>
-      <h1 className="text-4xl font-bold">Hello World</h1>
-    </div>
+    <>
+      <h1 className="text-4xl font-bold text-center">In construction...</h1>
+
+      <Newsletter />
+      <Footer />
+    </>
   );
 }
