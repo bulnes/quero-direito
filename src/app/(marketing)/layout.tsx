@@ -1,6 +1,7 @@
+import "@/app/globals.css";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from "@/constants";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,9 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Quero Direito - IA para Automação Jurídica | Atendimento 24h",
-  description:
-    "Automatize seu atendimento jurídico com IA. Triagem inteligente, agendamento automático e fechamento de contratos. Aumente sua conversão em 95% com tecnologia de ponta.",
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
   keywords: [
     "automação",
     "jurídica",
@@ -26,21 +26,20 @@ export const metadata: Metadata = {
     "chatbot jurídico",
     "CRM jurídico",
   ],
-  authors: [{ name: "Quero Direito", url: "https://quero-direito.vercel.app" }],
-  publisher: "Quero Direito",
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  publisher: SITE_NAME,
   robots: "index, follow",
   openGraph: {
-    title: "Quero Direito - IA para Automação Jurídica | Atendimento 24h",
-    description:
-      "Automatize seu atendimento jurídico com IA. Triagem inteligente, agendamento automático e fechamento de contratos. Aumente sua conversão em 95% com tecnologia de ponta.",
-    url: "https://quero-direito.vercel.app",
-    siteName: "Quero Direito",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: `${SITE_URL}`,
+    siteName: SITE_NAME,
     images: [
       {
-        url: "https://quero-direito.vercel.app/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Quero Direito - IA para Automação Jurídica",
+        url: `${SITE_URL}/og-image.png`,
+        width: 500,
+        height: 500,
+        alt: SITE_TITLE,
       },
     ],
   },
