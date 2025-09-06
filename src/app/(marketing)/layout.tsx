@@ -26,18 +26,18 @@ export const metadata: Metadata = {
     "chatbot jurídico",
     "CRM jurídico",
   ],
-  authors: [{ name: "Quero Direito", url: "https://querodireito.com.br" }],
+  authors: [{ name: "Quero Direito", url: "https://quero-direito.vercel.app" }],
   publisher: "Quero Direito",
   robots: "index, follow",
   openGraph: {
     title: "Quero Direito - IA para Automação Jurídica | Atendimento 24h",
     description:
       "Automatize seu atendimento jurídico com IA. Triagem inteligente, agendamento automático e fechamento de contratos. Aumente sua conversão em 95% com tecnologia de ponta.",
-    url: "https://querodireito.com.br",
+    url: "https://quero-direito.vercel.app",
     siteName: "Quero Direito",
     images: [
       {
-        url: "https://querodireito.com.br/og-image.png",
+        url: "https://quero-direito.vercel.app/og-image.png",
         width: 1200,
         height: 630,
         alt: "Quero Direito - IA para Automação Jurídica",
