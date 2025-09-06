@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 interface AccessibilityState {
   fontSize: number;
@@ -51,16 +51,16 @@ export function useAccessibility() {
     const announcer = document.getElementById(
       priority === 'assertive' ? 'status-announcements' : 'notification-announcements'
     );
-    
+
     if (announcer) {
       // Limpar conteúdo anterior
       announcer.textContent = '';
-      
+
       // Adicionar nova mensagem após um pequeno delay
       setTimeout(() => {
         announcer.textContent = message;
       }, 100);
-      
+
       // Limpar após alguns segundos
       setTimeout(() => {
         announcer.textContent = '';
@@ -73,7 +73,10 @@ export function useAccessibility() {
 
     // Criar contexto de áudio simples para feedback
     try {
-      const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+      const audioContext = new (
+        window.AudioContext ||
+        (window as typeof window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext
+      )();
       const oscillator = audioContext.createOscillator();
       const gainNode = audioContext.createGain();
 
@@ -95,7 +98,7 @@ export function useAccessibility() {
       oscillator.stop(audioContext.currentTime + 0.2);
     } catch (error) {
       // Silenciosamente falhar se áudio não estiver disponível
-      console.warn('Audio feedback not available');
+      console.warn('Audio feedback not available', error);
     }
   }, [state.soundEnabled]);
 
@@ -151,25 +154,25 @@ export function useAccessibility() {
         e.preventDefault();
         increaseFontSize();
       }
-      
+
       // Alt + - para diminuir fonte
       if (e.altKey && e.key === '-') {
         e.preventDefault();
         decreaseFontSize();
       }
-      
+
       // Alt + 0 para resetar fonte
       if (e.altKey && e.key === '0') {
         e.preventDefault();
         resetFontSize();
       }
-      
+
       // Alt + C para toggle contraste
       if (e.altKey && e.key === 'c') {
         e.preventDefault();
         toggleHighContrast();
       }
-      
+
       // Escape para fechar menus/dropdowns
       if (e.key === 'Escape') {
         const activeElement = document.activeElement as HTMLElement;
@@ -203,7 +206,7 @@ export function useFocusManagement() {
     const focusableElements = element.querySelectorAll(
       'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
     );
-    
+
     const firstElement = focusableElements[0] as HTMLElement;
     const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
 
@@ -224,7 +227,7 @@ export function useFocusManagement() {
     };
 
     element.addEventListener('keydown', handleTabKey);
-    
+
     return () => {
       element.removeEventListener('keydown', handleTabKey);
     };
