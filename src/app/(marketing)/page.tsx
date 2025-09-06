@@ -14,6 +14,7 @@ import { ThemeProvider } from "@/contexts/marketing/theme-provider";
 export default function Home() {
   return (
     <ThemeProvider>
+      {/* Cabeçalho do Site */}
       <Header />
 
       {/* Conteúdo Principal */}
