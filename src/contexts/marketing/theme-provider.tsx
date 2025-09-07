@@ -41,11 +41,6 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     localStorage.setItem("theme", theme);
   }, [theme, isInitialized]);
 
-  // Garantir que sempre inicie sem a classe dark
-  useEffect(() => {
-    document.documentElement.classList.remove("dark");
-  }, []);
-
   const value = {
     theme,
     setTheme,
