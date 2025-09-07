@@ -170,7 +170,10 @@ export function ProblemSolution() {
   ];
 
   return (
-    <section className="py-12 md:py-16 bg-gradient-to-b from-slate-50 to-white dark:from-muted/30 dark:to-background relative overflow-hidden">
+    <section
+      id="solucoes"
+      className="py-12 md:py-16 bg-gradient-to-b from-slate-50 to-white dark:from-muted/30 dark:to-background relative overflow-hidden"
+    >
       {/* Background Elements - Fixed for light mode */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,theme(colors.border)_1px,transparent_1px),linear-gradient(to_bottom,theme(colors.border)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-gradient-to-l from-red-100 dark:from-red-950/30 to-transparent rounded-full blur-3xl opacity-20"></div>
