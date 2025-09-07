@@ -24,8 +24,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [fontSize, setFontSize] = useState(14);
-  const [highContrast, setHighContrast] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const { actions } = useAccessibility();
   const { trapFocus } = useFocusManagement();
@@ -33,33 +31,6 @@ export function Header() {
   const { scrollToSection } = useSmoothScroll();
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
-
-  const increaseFontSize = () => {
-    const newSize = Math.min(fontSize + 2, 24);
-    setFontSize(newSize);
-    document.documentElement.style.setProperty("--font-size", `${newSize}px`);
-    actions.announceToScreenReader(
-      `Tamanho da fonte aumentado para ${newSize} pixels`
-    );
-  };
-
-  const decreaseFontSize = () => {
-    const newSize = Math.max(fontSize - 2, 12);
-    setFontSize(newSize);
-    document.documentElement.style.setProperty("--font-size", `${newSize}px`);
-    actions.announceToScreenReader(
-      `Tamanho da fonte diminuído para ${newSize} pixels`
-    );
-  };
-
-  const toggleHighContrast = () => {
-    const newContrast = !highContrast;
-    setHighContrast(newContrast);
-    document.documentElement.classList.toggle("high-contrast", newContrast);
-    actions.announceToScreenReader(
-      newContrast ? "Alto contraste ativado" : "Alto contraste desativado"
-    );
-  };
 
   const toggleMenu = () => {
     const newMenuState = !isMenuOpen;
@@ -194,9 +165,6 @@ export function Header() {
       mainContent.scrollIntoView({ behavior: "smooth" });
     }
   };
-
-  // Check if font size is modified
-  const isFontModified = fontSize !== 14;
 
   return (
     <>
@@ -344,102 +312,35 @@ export function Header() {
                         ))}
                       </div>
 
-                      {/* Seção de Acessibilidade - NOVA */}
+                      {/* Theme Toggle */}
                       <div className="border-t border-gray-100 dark:border-gray-800 px-4 py-4 mt-2">
-                        <h4 className="text-xs font-medium text-gray-900 dark:text-gray-100 mb-4 uppercase tracking-wide">
-                          Acessibilidade
-                        </h4>
-
-                        {/* Font Size Controls */}
-                        <div className="space-y-4">
-                          <div className="flex items-center justify-between">
-                            <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">
-                              Tamanho da Fonte
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">
+                            Tema
+                          </span>
+                          <button
+                            onClick={toggleTheme}
+                            className={`flex items-center gap-2 px-3 py-2 rounded-lg border font-medium transition-all duration-200 shadow-sm hover:shadow-md ${
+                              theme === "dark"
+                                ? "bg-blue-100 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-800"
+                                : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-600 hover:border-gray-300 dark:hover:border-gray-500"
+                            }`}
+                            aria-label={`Alternar para modo ${
+                              theme === "light" ? "escuro" : "claro"
+                            }`}
+                            title={`Modo ${
+                              theme === "light" ? "escuro" : "claro"
+                            }`}
+                          >
+                            {theme === "light" ? (
+                              <Moon className="w-4 h-4" />
+                            ) : (
+                              <Sun className="w-4 h-4" />
+                            )}
+                            <span className="text-sm">
+                              {theme === "light" ? "Escuro" : "Claro"}
                             </span>
-                            <div className="flex items-center space-x-2">
-                              <button
-                                onClick={decreaseFontSize}
-                                className={`px-3 py-2 text-sm font-medium rounded-lg border transition-all duration-200 shadow-sm hover:shadow-md ${
-                                  isFontModified
-                                    ? "bg-blue-100 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-800"
-                                    : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-600 hover:border-gray-300 dark:hover:border-gray-500"
-                                }`}
-                                aria-label="Diminuir tamanho da fonte"
-                                title="Diminuir fonte"
-                              >
-                                A-
-                              </button>
-                              <span className="text-sm text-gray-600 dark:text-gray-400 min-w-[2.5rem] text-center font-mono">
-                                {fontSize}px
-                              </span>
-                              <button
-                                onClick={increaseFontSize}
-                                className={`px-3 py-2 text-sm font-medium rounded-lg border transition-all duration-200 shadow-sm hover:shadow-md ${
-                                  isFontModified
-                                    ? "bg-blue-100 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-800"
-                                    : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-600 hover:border-gray-300 dark:hover:border-gray-500"
-                                }`}
-                                aria-label="Aumentar tamanho da fonte"
-                                title="Aumentar fonte"
-                              >
-                                A+
-                              </button>
-                            </div>
-                          </div>
-
-                          {/* Theme Toggle */}
-                          <div className="flex items-center justify-between">
-                            <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">
-                              Tema
-                            </span>
-                            <button
-                              onClick={toggleTheme}
-                              className={`flex items-center gap-2 px-3 py-2 rounded-lg border font-medium transition-all duration-200 shadow-sm hover:shadow-md ${
-                                theme === "dark"
-                                  ? "bg-blue-100 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-800"
-                                  : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-600 hover:border-gray-300 dark:hover:border-gray-500"
-                              }`}
-                              aria-label={`Alternar para modo ${
-                                theme === "light" ? "escuro" : "claro"
-                              }`}
-                              title={`Modo ${
-                                theme === "light" ? "escuro" : "claro"
-                              }`}
-                            >
-                              {theme === "light" ? (
-                                <Moon className="w-4 h-4" />
-                              ) : (
-                                <Sun className="w-4 h-4" />
-                              )}
-                              <span className="text-sm">
-                                {theme === "light" ? "Escuro" : "Claro"}
-                              </span>
-                            </button>
-                          </div>
-
-                          {/* High Contrast */}
-                          <div className="flex items-center justify-between">
-                            <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">
-                              Alto Contraste
-                            </span>
-                            <button
-                              onClick={toggleHighContrast}
-                              className={`flex items-center gap-2 px-3 py-2 rounded-lg border font-medium transition-all duration-200 shadow-sm hover:shadow-md ${
-                                highContrast
-                                  ? "bg-blue-100 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-800"
-                                  : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-600 hover:border-gray-300 dark:hover:border-gray-500"
-                              }`}
-                              aria-label={`${
-                                highContrast ? "Desativar" : "Ativar"
-                              } alto contraste`}
-                              title="Alto contraste"
-                            >
-                              <div className="w-4 h-4 rounded-full border-2 border-current bg-gradient-to-r from-current via-transparent to-transparent"></div>
-                              <span className="text-sm">
-                                {highContrast ? "Ativo" : "Inativo"}
-                              </span>
-                            </button>
-                          </div>
+                          </button>
                         </div>
                       </div>
 
@@ -656,97 +557,31 @@ export function Header() {
               {/* Accessibility Controls Section - NO MENU MOBILE */}
               <div className="p-6 border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/50">
                 <div className="space-y-6">
-                  {/* Accessibility Section */}
-                  <div>
-                    <h4 className="text-sm font-medium text-gray-900 dark:text-gray-100 mb-4">
-                      Controles de Acessibilidade
-                    </h4>
-
-                    {/* Font Size Controls */}
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm text-gray-600 dark:text-gray-400">
-                          Tamanho da Fonte
-                        </span>
-                        <div className="flex items-center space-x-2">
-                          <button
-                            onClick={decreaseFontSize}
-                            className={`px-3 py-2 text-sm rounded-lg transition-colors ${
-                              isFontModified
-                                ? "bg-blue-100 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 font-semibold"
-                                : "bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600"
-                            }`}
-                            aria-label="Diminuir tamanho da fonte"
-                          >
-                            A-
-                          </button>
-                          <span className="text-sm text-gray-500 dark:text-gray-400 min-w-[3rem] text-center">
-                            {fontSize}px
-                          </span>
-                          <button
-                            onClick={increaseFontSize}
-                            className={`px-3 py-2 text-sm rounded-lg transition-colors ${
-                              isFontModified
-                                ? "bg-blue-100 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 font-semibold"
-                                : "bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600"
-                            }`}
-                            aria-label="Aumentar tamanho da fonte"
-                          >
-                            A+
-                          </button>
-                        </div>
-                      </div>
-
-                      {/* Theme Toggle */}
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm text-gray-600 dark:text-gray-400">
-                          Tema
-                        </span>
-                        <button
-                          onClick={toggleTheme}
-                          className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${
-                            theme === "dark"
-                              ? "bg-blue-100 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400"
-                              : "bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600"
-                          }`}
-                          aria-label={`Alternar para modo ${
-                            theme === "light" ? "escuro" : "claro"
-                          }`}
-                        >
-                          {theme === "light" ? (
-                            <Moon className="w-4 h-4" />
-                          ) : (
-                            <Sun className="w-4 h-4" />
-                          )}
-                          <span className="text-sm">
-                            {theme === "light" ? "Escuro" : "Claro"}
-                          </span>
-                        </button>
-                      </div>
-
-                      {/* High Contrast */}
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm text-gray-600 dark:text-gray-400">
-                          Alto Contraste
-                        </span>
-                        <button
-                          onClick={toggleHighContrast}
-                          className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${
-                            highContrast
-                              ? "bg-blue-100 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400"
-                              : "bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600"
-                          }`}
-                          aria-label={`${
-                            highContrast ? "Desativar" : "Ativar"
-                          } alto contraste`}
-                        >
-                          <div className="w-4 h-4 rounded-full border border-current bg-gradient-to-r from-current via-transparent to-transparent"></div>
-                          <span className="text-sm">
-                            {highContrast ? "Ativo" : "Inativo"}
-                          </span>
-                        </button>
-                      </div>
-                    </div>
+                  {/* Theme Toggle */}
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-gray-600 dark:text-gray-400">
+                      Tema
+                    </span>
+                    <button
+                      onClick={toggleTheme}
+                      className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${
+                        theme === "dark"
+                          ? "bg-blue-100 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400"
+                          : "bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600"
+                      }`}
+                      aria-label={`Alternar para modo ${
+                        theme === "light" ? "escuro" : "claro"
+                      }`}
+                    >
+                      {theme === "light" ? (
+                        <Moon className="w-4 h-4" />
+                      ) : (
+                        <Sun className="w-4 h-4" />
+                      )}
+                      <span className="text-sm">
+                        {theme === "light" ? "Escuro" : "Claro"}
+                      </span>
+                    </button>
                   </div>
 
                   {/* Status */}
