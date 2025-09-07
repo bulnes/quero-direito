@@ -9,11 +9,10 @@ import { Newsletter } from "@/components/marketing/newsletter";
 import { Pricing } from "@/components/marketing/pricing";
 import { ProblemSolution } from "@/components/marketing/problem-solution";
 import { WhyChoose } from "@/components/marketing/why-choose";
-import { ThemeProvider } from "@/contexts/marketing/theme-provider";
 
 export default function Home() {
   return (
-    <ThemeProvider>
+    <>
       {/* Cabeçalho do Site */}
       <Header />
 
@@ -32,6 +31,6 @@ export default function Home() {
 
       {/* Rodapé do Site */}
       <Footer />
-    </ThemeProvider>
+    </>
   );
 }

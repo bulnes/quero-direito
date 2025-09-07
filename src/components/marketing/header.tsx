@@ -7,14 +7,11 @@ import {
 } from "@/hooks/marketing/use-accessibility";
 import { useActiveSection } from "@/hooks/marketing/use-active-section";
 import { useSmoothScroll } from "@/hooks/marketing/use-smooth-scroll";
-import { useTheme } from "@/hooks/marketing/use-theme";
 import {
   ChevronDown,
   ChevronRight,
   Menu as MenuIcon,
-  Moon,
   Phone,
-  Sun,
   User,
   X,
 } from "lucide-react";
@@ -24,7 +21,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const { theme, toggleTheme } = useTheme();
   const { actions } = useAccessibility();
   const { trapFocus } = useFocusManagement();
   const activeSection = useActiveSection();
@@ -312,38 +308,6 @@ export function Header() {
                         ))}
                       </div>
 
-                      {/* Theme Toggle */}
-                      <div className="border-t border-gray-100 dark:border-gray-800 px-4 py-4 mt-2">
-                        <div className="flex items-center justify-between">
-                          <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">
-                            Tema
-                          </span>
-                          <button
-                            onClick={toggleTheme}
-                            className={`flex items-center gap-2 px-3 py-2 rounded-lg border font-medium transition-all duration-200 shadow-sm hover:shadow-md ${
-                              theme === "dark"
-                                ? "bg-blue-100 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-800"
-                                : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-600 hover:border-gray-300 dark:hover:border-gray-500"
-                            }`}
-                            aria-label={`Alternar para modo ${
-                              theme === "light" ? "escuro" : "claro"
-                            }`}
-                            title={`Modo ${
-                              theme === "light" ? "escuro" : "claro"
-                            }`}
-                          >
-                            {theme === "light" ? (
-                              <Moon className="w-4 h-4" />
-                            ) : (
-                              <Sun className="w-4 h-4" />
-                            )}
-                            <span className="text-sm">
-                              {theme === "light" ? "Escuro" : "Claro"}
-                            </span>
-                          </button>
-                        </div>
-                      </div>
-
                       {/* Footer do dropdown */}
                       <div className="border-t border-gray-100 dark:border-gray-800 px-4 py-3 mt-2">
                         <div className="flex items-center justify-between">
@@ -557,35 +521,8 @@ export function Header() {
               {/* Accessibility Controls Section - NO MENU MOBILE */}
               <div className="p-6 border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/50">
                 <div className="space-y-6">
-                  {/* Theme Toggle */}
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-600 dark:text-gray-400">
-                      Tema
-                    </span>
-                    <button
-                      onClick={toggleTheme}
-                      className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${
-                        theme === "dark"
-                          ? "bg-blue-100 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400"
-                          : "bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600"
-                      }`}
-                      aria-label={`Alternar para modo ${
-                        theme === "light" ? "escuro" : "claro"
-                      }`}
-                    >
-                      {theme === "light" ? (
-                        <Moon className="w-4 h-4" />
-                      ) : (
-                        <Sun className="w-4 h-4" />
-                      )}
-                      <span className="text-sm">
-                        {theme === "light" ? "Escuro" : "Claro"}
-                      </span>
-                    </button>
-                  </div>
-
                   {/* Status */}
-                  <div className="flex justify-center pt-4 border-t border-gray-200 dark:border-gray-700">
+                  <div className="flex justify-center pt-4">
                     <div className="flex items-center space-x-2">
                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                       <span className="text-xs text-gray-500 dark:text-gray-400">
