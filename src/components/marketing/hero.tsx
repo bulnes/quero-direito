@@ -123,6 +123,7 @@ export function Hero() {
                           >
                             <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
                           </svg>
+                          <span className="sr-only">Mais opções</span>
                         </button>
                       </div>
                     </div>
@@ -184,11 +185,11 @@ export function Hero() {
                               <span className="font-medium text-sm text-slate-900 dark:text-foreground truncate">
                                 Carlos Roberto
                               </span>
-                              <span className="text-xs text-slate-500 dark:text-muted-foreground">
+                              <span className="text-xs text-slate-700 dark:text-muted-foreground">
                                 14:32
                               </span>
                             </div>
-                            <div className="text-xs text-slate-600 dark:text-muted-foreground truncate">
+                            <div className="text-xs text-slate-800 dark:text-muted-foreground truncate">
                               Preciso de ajuda com questão trabalhista...
                             </div>
                             <div className="flex items-center gap-2 mt-1">
@@ -440,9 +441,9 @@ export function Hero() {
                   <div className="bg-gradient-to-r from-slate-50 via-white to-blue-50/40 dark:from-muted/20 dark:via-background dark:to-blue-950/20 px-6 py-4 border-b border-slate-200/60 dark:border-border">
                     <div className="flex items-center justify-between">
                       <div>
-                        <h3 className="font-semibold text-slate-900 dark:text-foreground text-lg">
+                        <h2 className="font-semibold text-slate-900 dark:text-foreground text-lg">
                           Analytics Dashboard
-                        </h3>
+                        </h2>
                         <div className="text-xs text-slate-500 dark:text-muted-foreground flex items-center gap-2">
                           Quero Direito • Tempo real
                           <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-green-100 dark:bg-green-950/50 text-green-700 dark:text-green-300 rounded-full text-xs">
@@ -463,6 +464,7 @@ export function Hero() {
                               d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
                             />
                           </svg>
+                          <span className="sr-only">Mais opções</span>
                         </button>
                         <button className="w-8 h-8 bg-slate-100 dark:bg-muted hover:bg-slate-200 dark:hover:bg-muted/80 rounded-lg flex items-center justify-center transition-colors">
                           <svg
@@ -472,6 +474,7 @@ export function Hero() {
                           >
                             <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
                           </svg>
+                          <span className="sr-only">Mais opções</span>
                         </button>
                       </div>
                     </div>
