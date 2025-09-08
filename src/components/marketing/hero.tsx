@@ -559,9 +559,9 @@ export function Hero() {
                     <div className="bg-white dark:bg-card rounded-xl p-5 border border-slate-200/50 dark:border-border shadow-sm hover:shadow-md transition-all">
                       <div className="flex items-center justify-between mb-4">
                         <div>
-                          <h4 className="font-semibold text-slate-900 dark:text-foreground text-sm">
+                          <h3 className="font-semibold text-slate-900 dark:text-foreground text-sm">
                             Conversões Últimos 7 Dias
-                          </h4>
+                          </h3>
                           <p className="text-xs text-slate-500 dark:text-muted-foreground">
                             Leads → Clientes
                           </p>
@@ -688,9 +688,9 @@ export function Hero() {
 
                     {/* Lista de últimas atividades - Fixed for light mode - Hidden on mobile */}
                     <div className="hidden md:block bg-white dark:bg-card rounded-xl p-5 border border-slate-200/50 dark:border-border shadow-sm">
-                      <h4 className="font-semibold text-slate-900 dark:text-foreground text-sm mb-4">
+                      <h3 className="font-semibold text-slate-900 dark:text-foreground text-sm mb-4">
                         Atividade Recente
-                      </h4>
+                      </h3>
                       <div className="space-y-3">
                         <div className="flex items-start gap-3 p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-muted/30 transition-colors">
                           <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white text-xs font-semibold flex-shrink-0">
