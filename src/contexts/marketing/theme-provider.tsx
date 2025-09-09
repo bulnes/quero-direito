@@ -18,10 +18,14 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
 
   // Efeito para carregar preferência salva (se existir) após primeira renderização
   useEffect(() => {
+    const root = document.documentElement;
+
     const savedTheme = localStorage.getItem("theme") as Theme;
     if (savedTheme && (savedTheme === "light" || savedTheme === "dark")) {
+      root.classList.add(savedTheme);
       setTheme(savedTheme);
     }
+
     setIsInitialized(true);
   }, []);
 
