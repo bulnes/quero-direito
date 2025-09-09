@@ -185,7 +185,7 @@ export function Header() {
           <div className="flex items-center justify-between h-16">
             {/* Logo + Menu Button */}
             <div className="flex items-center gap-6">
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-1 sm:gap-3">
                 <Image
                   src={"/quero-direito-logo.png"}
                   alt="Quero Direito - Logotipo da empresa de automação jurídica com IA"
@@ -351,7 +351,7 @@ export function Header() {
             </div>
 
             {/* Mobile - Demo button e menu */}
-            <div className="flex lg:hidden items-center space-x-3">
+            <div className="flex lg:hidden items-center space-x-1 sm:space-x-3">
               <Button
                 size="sm"
                 className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium"
