@@ -1,4 +1,6 @@
 import { Button } from "@/components/ui/button";
+import { getWhatsappLink } from "@/lib/utils";
+import Link from "next/link";
 
 export function Newsletter() {
   return (
@@ -27,12 +29,18 @@ export function Newsletter() {
                 aria-label="Digite seu e-mail para newsletter"
                 aria-describedby="newsletter-privacy"
               />
-              <Button
-                className="bg-white text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium transition-all duration-200 shadow-lg hover:shadow-xl cursor-pointer"
-                aria-label="Inscrever-se na newsletter"
+              <Link
+                href={getWhatsappLink()}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Inscrever-se
-              </Button>
+                <Button
+                  className="bg-white text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium transition-all duration-200 shadow-lg hover:shadow-xl cursor-pointer"
+                  aria-label="Inscrever-se na newsletter"
+                >
+                  Inscrever-se
+                </Button>
+              </Link>
             </div>
             <p id="newsletter-privacy" className="text-xs text-blue-200 mt-4">
               Seus dados estão seguros. Não enviamos spam.

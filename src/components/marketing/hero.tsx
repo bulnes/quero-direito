@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
+import { getWhatsappLink } from "@/lib/utils";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export function Hero() {
   return (
@@ -37,18 +39,25 @@ export function Hero() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
-              <Button
-                size="lg"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-200"
+              <Link
+                href={getWhatsappLink()}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Agendar demonstração
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
+                <Button
+                  size="lg"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-200"
+                >
+                  Agendar demonstração
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </Link>
 
               {/* <Button
                 variant="outline"
                 size="lg"
                 className="px-8 py-4 text-lg rounded-xl border-slate-300 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all duration-200 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"
+                
               >
                 <Play className="w-5 h-5 mr-2" />
                 Ver demonstração

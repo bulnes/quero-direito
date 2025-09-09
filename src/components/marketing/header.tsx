@@ -7,6 +7,7 @@ import {
 } from "@/hooks/marketing/use-accessibility";
 import { useActiveSection } from "@/hooks/marketing/use-active-section";
 import { useSmoothScroll } from "@/hooks/marketing/use-smooth-scroll";
+import { openButtonInNewTab } from "@/lib/utils";
 import {
   ChevronDown,
   ChevronRight,
@@ -318,6 +319,7 @@ export function Header() {
                             variant="outline"
                             size="sm"
                             className="h-7 px-3 text-xs border-gray-200 dark:border-gray-700"
+                            onClick={openButtonInNewTab}
                           >
                             Falar conosco
                           </Button>
@@ -336,6 +338,7 @@ export function Header() {
                 variant="outline"
                 className="border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center gap-2"
                 aria-label="Entrar na conta"
+                onClick={openButtonInNewTab}
               >
                 <User className="w-4 h-4" />
                 <span>Entrar</span>
@@ -345,6 +348,7 @@ export function Header() {
               <Button
                 className="bg-blue-600 hover:bg-blue-700 text-white shadow-sm rounded-lg px-6 py-2.5 font-medium"
                 aria-label="Agendar uma demonstração da plataforma"
+                onClick={openButtonInNewTab}
               >
                 Agendar demonstração
               </Button>
@@ -356,6 +360,7 @@ export function Header() {
                 size="sm"
                 className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium"
                 aria-label="Agendar demonstração"
+                onClick={openButtonInNewTab}
               >
                 Agendar demo
               </Button>
@@ -443,7 +448,7 @@ export function Header() {
               <div className="p-6 border-b border-gray-200 dark:border-gray-800">
                 <Button
                   className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200"
-                  onClick={closeMenu}
+                  onClick={openButtonInNewTab}
                   aria-label="Entrar na minha conta"
                 >
                   <User className="w-5 h-5 mr-2" aria-hidden="true" />
@@ -456,7 +461,7 @@ export function Header() {
                 <Button
                   variant="outline"
                   className="w-full border-blue-200 dark:border-blue-800 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/20 hover:border-blue-300 dark:hover:border-blue-700 py-3 rounded-xl transition-all duration-200"
-                  onClick={closeMenu}
+                  onClick={openButtonInNewTab}
                   aria-label="Agendar demonstração da plataforma"
                 >
                   <Phone className="w-5 h-5 mr-2" aria-hidden="true" />

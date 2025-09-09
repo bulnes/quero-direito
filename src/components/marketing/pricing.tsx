@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { getWhatsappLink } from "@/lib/utils";
 import {
   ArrowRight,
   Check,
@@ -15,6 +16,7 @@ import {
   Users,
   Zap,
 } from "lucide-react";
+import Link from "next/link";
 
 export function Pricing() {
   const features = [
@@ -177,13 +179,19 @@ export function Pricing() {
               </CardHeader>
 
               <CardContent className="px-6 pb-6 mt-auto">
-                <Button
-                  className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 py-3 text-base font-bold rounded-xl group mb-4"
-                  size="lg"
+                <Link
+                  href={getWhatsappLink()}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  Começar Agora
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                  <Button
+                    className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 py-3 text-base font-bold rounded-xl group mb-4"
+                    size="lg"
+                  >
+                    Começar Agora
+                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
 
                 {/* Frases de flexibilidade */}
                 <div className="text-center space-y-1">
@@ -217,15 +225,21 @@ export function Pricing() {
                 </div>
 
                 {/* Right Side - CTA Button */}
-                <div className="flex-shrink-0">
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="border-blue-200 text-blue-600 hover:bg-blue-50 dark:border-blue-800 dark:text-blue-400 dark:hover:bg-blue-950/20 px-8 py-4 font-semibold rounded-xl text-lg whitespace-nowrap"
+                <div className="text-center flex-shrink-0">
+                  <Link
+                    href={getWhatsappLink()}
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    Falar com Especialista
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      className="border-blue-200 text-blue-600 hover:bg-blue-50 dark:border-blue-800 dark:text-blue-400 dark:hover:bg-blue-950/20 px-8 py-4 font-semibold rounded-xl text-lg whitespace-nowrap"
+                    >
+                      Falar com Especialista
+                      <ArrowRight className="w-5 h-5 ml-2" />
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </CardContent>

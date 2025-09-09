@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+import { getWhatsappLink } from "@/lib/utils";
 import {
   BarChart3,
   Bell,
@@ -20,6 +22,7 @@ import {
   X,
   Zap,
 } from "lucide-react";
+import Link from "next/link";
 
 export function ProblemSolution() {
   const comparisons = [
@@ -367,9 +370,18 @@ export function ProblemSolution() {
               </p>
 
               <div className="flex justify-center">
-                <div className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors cursor-pointer">
-                  <span>Ver demonstração ao vivo</span>
-                </div>
+                <Link
+                  href={getWhatsappLink()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button
+                    size="lg"
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200"
+                  >
+                    <span>Ver demonstração ao vivo</span>
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>

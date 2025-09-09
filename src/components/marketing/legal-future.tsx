@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
+import { getWhatsappLink } from "@/lib/utils";
 import { ArrowRight, Calendar, CheckCircle, Users } from "lucide-react";
+import Link from "next/link";
 
 export function LegalFuture() {
   return (
@@ -37,22 +39,34 @@ export function LegalFuture() {
 
           {/* CTA Buttons alinhados à esquerda */}
           <div className="flex flex-col sm:flex-row gap-4 mb-16">
-            <Button
-              size="lg"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg rounded-xl shadow-2xl hover:shadow-blue-500/25 transition-all duration-300"
+            <Link
+              href={getWhatsappLink()}
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Agendar demonstração
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
+              <Button
+                size="lg"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg rounded-xl shadow-2xl hover:shadow-blue-500/25 transition-all duration-300"
+              >
+                Agendar demonstração
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </Link>
 
-            <Button
-              variant="outline"
-              size="lg"
-              className="px-8 py-4 text-lg rounded-xl bg-transparent border-2 border-slate-400 text-slate-200 hover:bg-white hover:border-white hover:text-slate-900 transition-all duration-300"
+            <Link
+              href={getWhatsappLink()}
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <Calendar className="w-5 h-5 mr-2" />
-              Falar com especialista
-            </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="px-8 py-4 text-lg rounded-xl bg-transparent border-2 border-slate-400 text-slate-200 hover:bg-white hover:border-white hover:text-slate-900 transition-all duration-300"
+              >
+                <Calendar className="w-5 h-5 mr-2" />
+                Falar com especialista
+              </Button>
+            </Link>
           </div>
 
           {/* Trust Indicators - Cards mais finos seguindo padrão */}

@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { getWhatsappLink } from "@/lib/utils";
 import {
   ArrowRight,
   Calendar,
@@ -6,6 +7,7 @@ import {
   MessageSquare,
   TrendingUp,
 } from "lucide-react";
+import Link from "next/link";
 
 export function HowItWorks() {
   const steps = [
@@ -137,13 +139,19 @@ export function HowItWorks() {
               Junte-se a centenas de escritórios que já automatizaram seus
               processos e aumentaram sua eficiência em 10x.
             </p>
-            <Button
-              size="lg"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200"
+            <Link
+              href={getWhatsappLink()}
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Agendar demonstração
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
+              <Button
+                size="lg"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200"
+              >
+                Agendar demonstração
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,7 +1,9 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { getWhatsappLink } from "@/lib/utils";
 import { Check, Users, Zap } from "lucide-react";
+import Link from "next/link";
 
 export function AutomationSection() {
   const pricingPlans = [
@@ -88,15 +90,21 @@ export function AutomationSection() {
                     </div>
                   </div>
 
-                  <Button
-                    className={`w-full py-3 font-semibold rounded-lg transition-all duration-200 mt-auto ${
-                      index === 1
-                        ? "bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-xl"
-                        : "bg-slate-100 dark:bg-slate-700 hover:bg-blue-50 dark:hover:bg-blue-950/20 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 border border-slate-300 dark:border-slate-600"
-                    }`}
+                  <Link
+                    href={getWhatsappLink()}
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    Assine Agora
-                  </Button>
+                    <Button
+                      className={`w-full py-3 font-semibold rounded-lg transition-all duration-200 mt-auto ${
+                        index === 1
+                          ? "bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-xl"
+                          : "bg-slate-100 dark:bg-slate-700 hover:bg-blue-50 dark:hover:bg-blue-950/20 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 border border-slate-300 dark:border-slate-600"
+                      }`}
+                    >
+                      Assine Agora
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             ))}
@@ -135,12 +143,18 @@ export function AutomationSection() {
                     </div>
 
                     <div className="flex-shrink-0">
-                      <Button
-                        variant="outline"
-                        className="py-3 px-6 font-medium rounded-lg border-blue-300 dark:border-blue-600 text-blue-600 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-950/30"
+                      <Link
+                        href={getWhatsappLink()}
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
-                        Falar com Consultor
-                      </Button>
+                        <Button
+                          variant="outline"
+                          className="py-3 px-6 font-medium rounded-lg border-blue-300 dark:border-blue-600 text-blue-600 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-950/30"
+                        >
+                          Falar com Consultor
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </CardContent>
