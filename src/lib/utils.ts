@@ -10,3 +10,13 @@ export function getWhatsappLink(message = DEFAULT_WHATSAPP_MESSAGE, phone = DEFA
   const encodedMessage = encodeURIComponent(message);
   return `https://wa.me/${phone}?text=${encodedMessage}`;
 }
+
+export function formatPhoneNumber(phone: string) {
+  const cleaned = phone.replace(/\D/g, "");
+  const match = cleaned.match(/^(\d{2})(\d{4,5})(\d{4})$/);
+  if (match) {
+    const [, ddd, firstPart, secondPart] = match;
+    return `(${ddd}) ${firstPart}-${secondPart}`;
+  }
+  return phone;
+}

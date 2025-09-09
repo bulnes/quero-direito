@@ -1,3 +1,5 @@
+import { DEFAULT_PHONE } from "@/constants";
+import { formatPhoneNumber } from "@/lib/utils";
 import {
   Clock,
   Facebook,
@@ -113,9 +115,9 @@ export function Footer() {
                 <a
                   href="tel:+551151232482"
                   className="text-sm hover:text-blue-600 dark:hover:text-blue-400 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-400 rounded leading-relaxed"
-                  aria-label="Ligar para (011) 5123-2482"
+                  aria-label={`Ligar para ${formatPhoneNumber(DEFAULT_PHONE)}`}
                 >
-                  (011) 5123-2482
+                  {formatPhoneNumber(DEFAULT_PHONE)}
                 </a>
               </div>
 
