@@ -20,3 +20,14 @@ export function formatPhoneNumber(phone: string) {
   }
   return phone;
 }
+
+export function openInNewTab(url: string) {
+  window.open(url, "_blank", "noopener,noreferrer");
+}
+
+export function openButtonInNewTab(event: React.MouseEvent<HTMLButtonElement>) {
+  event.preventDefault();
+
+  const url = getWhatsappLink();
+  openInNewTab(url);
+}
