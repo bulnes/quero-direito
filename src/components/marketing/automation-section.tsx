@@ -107,8 +107,7 @@ export function AutomationSection() {
             <div className="w-full max-w-4xl">
               <Card className="border-2 border-dashed border-blue-300 dark:border-blue-600 bg-blue-50/50 dark:bg-blue-950/20">
                 <CardContent className="p-6">
-                  <div className="flex items-center justify-between gap-8">
-                    {/* Primeira seção - +480 e conversas/mês */}
+                  <div className="flex flex-col md:flex-row items-center justify-between gap-8">
                     <div className="text-center min-w-[80px]">
                       <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 leading-none">
                         +480
@@ -118,26 +117,23 @@ export function AutomationSection() {
                       </div>
                     </div>
 
-                    {/* Segunda seção - PERSONALIZADO */}
                     <div className="text-center min-w-[120px]">
-                      <div className="font-bold text-slate-900 dark:text-slate-100 leading-none">
-                        PERSONALIZADO
+                      <div className="font-bold text-slate-900 dark:text-slate-100 leading-none uppercase">
+                        Personalizado
                       </div>
                       <div className="text-sm text-slate-600 dark:text-slate-400 mt-1">
                         Sob consulta
                       </div>
                     </div>
 
-                    {/* Terceira seção - Texto descritivo */}
                     <div className="flex-1 text-center px-6">
-                      <div className="text-slate-900 dark:text-slate-100 font-medium">
-                        PARA ESCRITÓRIOS COM NECESSIDADE DE
+                      <div className="text-slate-900 dark:text-slate-100 font-medium uppercase">
+                        Para escritórios com necessidade de
                         <br />
-                        ALTO VOLUME DE ATENDIMENTOS
+                        alto volume de atendimento
                       </div>
                     </div>
 
-                    {/* Quarta seção - Botão */}
                     <div className="flex-shrink-0">
                       <Button
                         variant="outline"
