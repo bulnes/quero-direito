@@ -5,4 +5,4 @@ export const SITE_DESCRIPTION = "Automatize seu atendimento jurídico com IA. Tr
 
 export const DEFAULT_PHONE = "1151922595";
 export const DEFAULT_WHATSAPP_PHONE = `55${DEFAULT_PHONE}`;
-export const DEFAULT_WHATSAPP_MESSAGE = "Olá, gostaria de mais informações sobre os serviços jurídicos oferecidos.";
+export const DEFAULT_WHATSAPP_MESSAGE = "Olá, quero agendar uma demonstração sobre os serviços de IA da Quero Direito.";
