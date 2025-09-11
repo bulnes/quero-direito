@@ -36,8 +36,14 @@ export function Footer() {
   ];
 
   const legalLinks = [
-    { name: "Política de Privacidade", href: "#" },
-    { name: "Termos de Uso", href: "#" },
+    {
+      name: "Política de Privacidade",
+      href: "https://www.querodireito.com.br/politica-de-privacidade",
+    },
+    {
+      name: "Termos de Uso",
+      href: "https://www.querodireito.com.br/termos-e-condicoes",
+    },
   ];
 
   const socialLinks = [
@@ -50,7 +56,7 @@ export function Footer() {
     {
       name: "Instagram",
       icon: Instagram,
-      href: "#",
+      href: "https://www.instagram.com/querodireito.legaltech",
       color: "hover:text-pink-600",
     },
     {
@@ -184,6 +190,8 @@ export function Footer() {
                   key={index}
                   href={link.href}
                   className="block text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-400 rounded leading-relaxed"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   {link.name}
                 </a>
@@ -225,6 +233,8 @@ export function Footer() {
                     className={`inline-flex items-center justify-center w-10 h-10 text-gray-600 dark:text-gray-400 ${social.color} transition-colors duration-200 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-400`}
                     aria-label={`Seguir no ${social.name}`}
                     title={`Seguir no ${social.name}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <social.icon className="w-5 h-5" />
                   </a>
